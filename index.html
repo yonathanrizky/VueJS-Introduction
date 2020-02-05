@@ -85,6 +85,16 @@
                 this.btnLihat = true;
             },
             tambahData(){
+                if(!this.judul){
+                    alert("Judul harus diisi");
+                    return false;
+                }else if(!this.deskripsi){
+                    alert("Deskripsi harus diisi");
+                    return false;
+                }else if(!this.tanggal){
+                    alert("Tanggal harus diisi");
+                    return false;
+                }
                 this.list.push({
                     judul: this.judul,
                     tanggal: this.tanggal,
