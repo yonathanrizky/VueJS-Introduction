@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computed Properties - VueJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" id="body">
+        <h1>Kalkulator</h1>
+        <div class="form-group">
+            <label>Nilai A</label>
+            <input v-model="nilaiA" type="number" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Operator</label>
+            <select class="form-control" v-model="o">
+                <option>+</option>
+                <option>-</option>
+                <option>x</option>
+                <option>/</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nilai B</label>
+            <input v-model="nilaiB" type="number" class="form-control" />
+        </div>
+        <h2>Hasil</h2>
+        <p>Nilai A = {{ nilaiA }}</p>
+        <p>Nilai B = {{ nilaiB }}</p>
+        <p>Maka A {{ o }} B  = {{ hasil }}</p>
+
+        <h1>Nilai lebih dari 25 = {{ tertinggi.length }}</h1>
+        <ul class="list-group">
+            <li v-for="total in count" class="list-group-item">
+                {{ total.nama}} Belajar {{ total.matkul }}
+                dan mendapatkan nilai {{ total.nilai }}
+            </li>
+        </ul>
+    </div>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#body',
+        data : {
+            nilaiA: '',
+            nilaiB: '',
+            o: '',
+            count: [
+                {
+                    matkul : "VueJS",
+                    nama: "Jon",
+                    nilai : 28
+                },
+                {
+                    matkul : "Javascript",
+                    nama: "Joni",
+                    nilai : 24
+                },
+                {
+                    matkul: "Laravel",
+                    nama: "Neng",
+                    nilai: 74
+                }
+            ]
+        },
+        computed: {
+            hasil:function(){
+                switch (this.o) {
+                    case "+":
+                        return parseFloat(this.nilaiA) + parseFloat(this.nilaiB)
+                        break;
+                    case "-":
+                        return parseFloat(this.nilaiA) - parseFloat(this.nilaiB)
+                        break;
+                    case "*":
+                        return parseFloat(this.nilaiA) * parseFloat(this.nilaiB)
+                        break;
+                    case "/":
+                        return parseFloat(this.nilaiA) / parseFloat(this.nilaiB)
+                        break;
+                }
+            },
+            tertinggi:function(){
+                return this.count.filter(function(item){
+                    return item.nilai > 25;
+                });
+            }
+        }
+    });
+</script>
+</body>
+</html>
