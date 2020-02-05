@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Directive - VueJs</title>
+</head>
+<body>
+    <div id="body">
+        <ul class="list-group">
+            <li v-for="lang in bahasa">
+                Bahasa {{ lang.name }}, selama {{ lang.pengalaman}}
+            </li>
+        </ul>
+    </div>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:'#body',
+        data:{
+            bahasa: [
+                {
+                    name: 'php',
+                    pengalaman : '3 tahun'
+                },
+                {
+                    name: 'node js',
+                    pengalaman : '0 tahun'
+                },
+                {
+                    name: 'javascript',
+                    pengalaman : '1 tahun'
+                }
+            ]
+        }
+    });
+</script>
+</body>
+</html>
