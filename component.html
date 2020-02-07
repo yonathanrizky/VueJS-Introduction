@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Computed Properties - VueJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container" id="body">
+        <h1>Jadwal Belajar Hari Ini</h1>
+        <ul>
+            <body-paragraf v-for="bd in jadwal" v-bind:bd="bd"></body-paragraf>    
+        </ul>
+        <h1>Jadwal Belajar Besok</h1>
+        <ul>
+            <body-paragraf v-for="bd in jadwal" v-bind:bd="bd"></body-paragraf>    
+        </ul>
+        <!--  <body-paragraf v-bind:bd="{isi : 'VueJS', jam : '00.00'}"></body-paragraf> -->
+        <!-- <body-paragraf v-bind:bd="{isi : 'Laravel', jam : '01.00'}"></body-paragraf>
+        <body-paragraf v-bind:bd="{isi : 'CodeIgniter', jam : '02.00'}"></body-paragraf> -->
+        <!-- <body-paragraf isi="Laravel"></body-paragraf>
+        <body-paragraf isi="CodeIgniter"></body-paragraf> -->
+        <!-- <custom-component></custom-component> -->
+    </div>
+<script type="text/javascript" src="https://unpkg.com/vue@2.5.6/dist/vue.js"></script>
+<script type="text/template" id="custom-component">
+    <h1>Custom Component</h1>
+</script>
+<script type="text/template" id="body-paragraf">
+    <!-- <h1>{{ isi }}</h1> -->
+    <h1>{{ bd.isi }} pada jam {{ bd.jam}}</h1>
+</script>
+<script type="text/javascript">
+    Vue.component('body-paragraf', {
+        // template: '<h1>Membuat Component </h1>'
+        // template: '#custom-component'
+        template:'#body-paragraf',
+        props: ['bd']
+        // props: ['isi']
+    });
+
+    new Vue({
+        el: '#body',
+        data: {
+            jadwal: [
+                {
+                    isi: 'belajar vue.js', jam: '10.00'
+                },
+                {
+                    isi: 'belajar Laravel', jam: '12.00'
+                },
+                {
+                    isi: 'belajar HTML', jam: '18.00'
+                }
+            ]
+        }
+    })
+</script>
+</body>
+</html>
